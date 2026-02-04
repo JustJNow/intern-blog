@@ -19,7 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final authProvider = Provider.of<AuthProvider>(context);
 
     return Scaffold(
-      appBar: AppBar(title: const Text("Unlockd Demo Login")),
+      appBar: AppBar(title: const Text("The Keyturner")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(

@@ -1,6 +1,4 @@
 import '/models/blog_post.dart';
-
-// 1. The Interface (Contract)
 abstract class BlogService {
   Future<String> login(String username, String password);
   Future<void> logout();

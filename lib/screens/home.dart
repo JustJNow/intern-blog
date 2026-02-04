@@ -25,7 +25,15 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("The Daily Chronicle"),
+        leadingWidth: 75,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 0.0),
+          child: Image.asset(
+            'assets/images/logo.png',
+            fit: BoxFit.contain,
+          ),
+        ),
+        title: const Text("The Keyturner"),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(20),
           child: Padding(
@@ -39,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         actions: [
           IconButton(
             icon: const Icon(Icons.logout_outlined),
+            iconSize: 30,
             onPressed: () => authProvider.logout(),
           ),
         ],
@@ -66,8 +75,13 @@ class _HomeScreenState extends State<HomeScreen> {
 
 class NewspaperArticle extends StatelessWidget {
   final BlogPost post;
+  final Widget? imageOverride;
 
-  const NewspaperArticle({super.key, required this.post});
+  const NewspaperArticle({
+    super.key, 
+    required this.post, 
+    this.imageOverride
+    });
 
   @override
   Widget build(BuildContext context) {
@@ -94,8 +108,9 @@ class NewspaperArticle extends StatelessWidget {
                  0.2126, 0.7152, 0.0722, 0, 0,
                  0.2126, 0.7152, 0.0722, 0, 0,
                  0,      0,      0,      1, 0,
-              ]), // Grayscale first
-              child: Image.network(
+              ]),
+               // Grayscale first
+              child: imageOverride ?? Image.network(
                 post.imageUrl,
                 height: 200,
                 width: double.infinity,
